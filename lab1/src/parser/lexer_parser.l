@@ -27,4 +27,5 @@ void pass_node(char *text){
 . { pos_start = pos_end; pos_end++; return ERROR; }
 
  /****请在此补全所有flex的模式与动作  end******/
+     
 %%

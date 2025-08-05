@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/qianfu/USTC-Compiler/lab1/build/cmake_install.cmake",
+		"/home/qianfu/USTC-Compiler/lab1/build/src/cmake_install.cmake",
+		"/home/qianfu/USTC-Compiler/lab1/build/src/parser/cmake_install.cmake",
+		"/home/qianfu/USTC-Compiler/lab1/build/src/common/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

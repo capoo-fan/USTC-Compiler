@@ -1,0 +1,1 @@
+/usr/bin/c++  -O0 -Wall -g2 -ggdb -Wl,--dependency-file=CMakeFiles/lexer.dir/link.d CMakeFiles/lexer.dir/lexer.c.o -o ../../lexer  ../../libsyntax.a ../../libcommon.a

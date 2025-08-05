@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+c2666a4a63fe5d2229e6ee8479ecc902 src/parser/lexical_analyzer.c
+c3a19275a14514f497add2f32a50965e src/parser/syntax_analyzer.c
