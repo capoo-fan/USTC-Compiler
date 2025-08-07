@@ -55,7 +55,35 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     ERROR = 258,                   /* ERROR  */
-    ADD = 259                      /* ADD  */
+    ADD = 259,                     /* ADD  */
+    SUB = 260,                     /* SUB  */
+    MUL = 261,                     /* MUL  */
+    DIV = 262,                     /* DIV  */
+    LT = 263,                      /* LT  */
+    LE = 264,                      /* LE  */
+    GT = 265,                      /* GT  */
+    GE = 266,                      /* GE  */
+    EQ = 267,                      /* EQ  */
+    NE = 268,                      /* NE  */
+    ASSIGN = 269,                  /* ASSIGN  */
+    SEMICOLON = 270,               /* SEMICOLON  */
+    COMMA = 271,                   /* COMMA  */
+    LPAREN = 272,                  /* LPAREN  */
+    RPAREN = 273,                  /* RPAREN  */
+    LBRACKET = 274,                /* LBRACKET  */
+    RBRACKET = 275,                /* RBRACKET  */
+    LBRACE = 276,                  /* LBRACE  */
+    RBRACE = 277,                  /* RBRACE  */
+    ELSE = 278,                    /* ELSE  */
+    IF = 279,                      /* IF  */
+    INT = 280,                     /* INT  */
+    RETURN = 281,                  /* RETURN  */
+    VOID = 282,                    /* VOID  */
+    WHILE = 283,                   /* WHILE  */
+    FLOAT = 284,                   /* FLOAT  */
+    ID = 285,                      /* ID  */
+    INTEGER = 286,                 /* INTEGER  */
+    FLOATNUM = 287                 /* FLOATNUM  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -66,7 +94,12 @@ union YYSTYPE
 {
 #line 34 "syntax_analyzer.y"
 
-#line 70 "/home/qianfu/USTC-Compiler/lab1/build/syntax_analyzer.h"
+    syntax_tree_node *node;  // For syntax tree nodes
+    int integer;             // For integer tokens
+    float floatnum;          // For float tokens
+    
+
+#line 103 "/home/qianfu/USTC-Compiler/lab1/build/syntax_analyzer.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

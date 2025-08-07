@@ -1,6 +1,5 @@
-#line 1 "/home/qianfu/USTC-Compiler/lab1/build/src/parser/lexical_analyzer.c"
 
-#line 3 "/home/qianfu/USTC-Compiler/lab1/build/src/parser/lexical_analyzer.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -491,22 +490,69 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "lexical_analyzer.l"
-#line 3 "lexical_analyzer.l"
+#line 1 "standalone_lexer.l"
+#line 3 "standalone_lexer.l"
 /*****************声明和选项设置  begin*****************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "syntax_tree.h"
-#include "syntax_analyzer.h"
+// 定义必要的类型
+typedef struct syntax_tree_node {
+    char* name;
+} syntax_tree_node;
 
-/* 声明 fileno 函数 */
-extern int fileno(FILE *stream);
+typedef union {
+    syntax_tree_node* node;
+} YYSTYPE;
+
+YYSTYPE yylval;
+
+// 定义token值
+#define ADD 1
+#define SUB 2
+#define MUL 3
+#define DIV 4
+#define LT 5
+#define LE 6
+#define GT 7
+#define GE 8
+#define EQ 9
+#define NE 10
+#define ASSIGN 11
+#define SEMICOLON 12
+#define COMMA 13
+#define LPAREN 14
+#define RPAREN 15
+#define LBRACKET 16
+#define RBRACKET 17
+#define LBRACE 18
+#define RBRACE 19
+#define ELSE 20
+#define IF 21
+#define INT 22
+#define RETURN 23
+#define VOID 24
+#define WHILE 25
+#define FLOAT 26
+#define ID 27
+#define INTEGER 28
+#define FLOATNUM 29
+#define ERROR 30
 
 int lines = 1;
 int pos_start = 1;
 int pos_end = 1;
+
+/* 声明 fileno 函数 */
+extern int fileno(FILE *stream);
+
+// 实现 new_syntax_tree_node 函数
+syntax_tree_node* new_syntax_tree_node(char* text) {
+    syntax_tree_node* node = malloc(sizeof(syntax_tree_node));
+    node->name = text;
+    return node;
+}
 
 void pass_node(char *text){
      yylval.node = new_syntax_tree_node(text);
@@ -514,8 +560,8 @@ void pass_node(char *text){
 
 /*****************声明和选项设置  end*****************/
 
-#line 517 "/home/qianfu/USTC-Compiler/lab1/build/src/parser/lexical_analyzer.c"
-#line 518 "/home/qianfu/USTC-Compiler/lab1/build/src/parser/lexical_analyzer.c"
+#line 563 "lex.yy.c"
+#line 564 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -732,10 +778,10 @@ YY_DECL
 		}
 
 	{
-#line 34 "lexical_analyzer.l"
+#line 81 "standalone_lexer.l"
 
 
-#line 738 "/home/qianfu/USTC-Compiler/lab1/build/src/parser/lexical_analyzer.c"
+#line 784 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -794,153 +840,153 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 36 "lexical_analyzer.l"
+#line 83 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return ADD;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 37 "lexical_analyzer.l"
+#line 84 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return SUB;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 38 "lexical_analyzer.l"
+#line 85 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return MUL;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 39 "lexical_analyzer.l"
+#line 86 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return DIV;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 41 "lexical_analyzer.l"
+#line 88 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 2; pass_node(yytext); return LE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 42 "lexical_analyzer.l"
+#line 89 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 2; pass_node(yytext); return GE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 43 "lexical_analyzer.l"
+#line 90 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 2; pass_node(yytext); return EQ;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 44 "lexical_analyzer.l"
+#line 91 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 2; pass_node(yytext); return NE;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 45 "lexical_analyzer.l"
+#line 92 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return LT;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 46 "lexical_analyzer.l"
+#line 93 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return GT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 48 "lexical_analyzer.l"
+#line 95 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return ASSIGN;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 50 "lexical_analyzer.l"
+#line 97 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return SEMICOLON;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 51 "lexical_analyzer.l"
+#line 98 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return COMMA;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 52 "lexical_analyzer.l"
+#line 99 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return LPAREN;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 53 "lexical_analyzer.l"
+#line 100 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return RPAREN;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 54 "lexical_analyzer.l"
+#line 101 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return LBRACKET;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 55 "lexical_analyzer.l"
+#line 102 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return RBRACKET;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 56 "lexical_analyzer.l"
+#line 103 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return LBRACE;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 57 "lexical_analyzer.l"
+#line 104 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 1; pass_node(yytext); return RBRACE;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 59 "lexical_analyzer.l"
+#line 106 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 4; pass_node(yytext); return ELSE;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 60 "lexical_analyzer.l"
+#line 107 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 2; pass_node(yytext); return IF;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 61 "lexical_analyzer.l"
+#line 108 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 3; pass_node(yytext); return INT;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 62 "lexical_analyzer.l"
+#line 109 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 6; pass_node(yytext); return RETURN;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 63 "lexical_analyzer.l"
+#line 110 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 4; pass_node(yytext); return VOID;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 64 "lexical_analyzer.l"
+#line 111 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 5; pass_node(yytext); return WHILE;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 65 "lexical_analyzer.l"
+#line 112 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += 5; pass_node(yytext); return FLOAT;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 67 "lexical_analyzer.l"
+#line 114 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return ID;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 68 "lexical_analyzer.l"
+#line 115 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return INTEGER;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 69 "lexical_analyzer.l"
+#line 116 "standalone_lexer.l"
 {pos_start = pos_end; pos_end += yyleng; pass_node(yytext); return FLOATNUM;}
 	YY_BREAK
 case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
-#line 71 "lexical_analyzer.l"
+#line 118 "standalone_lexer.l"
 {
     pos_start = pos_end;
     for(int i = 0; i < yyleng; i++) {
@@ -956,7 +1002,7 @@ YY_RULE_SETUP
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 83 "lexical_analyzer.l"
+#line 130 "standalone_lexer.l"
 {
     pos_start = pos_end;
     for(int i = 0; i < yyleng; i++) {
@@ -971,15 +1017,15 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 95 "lexical_analyzer.l"
+#line 142 "standalone_lexer.l"
 {pos_start = pos_end; pos_end++; pass_node(yytext); return ERROR;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 97 "lexical_analyzer.l"
+#line 144 "standalone_lexer.l"
 ECHO;
 	YY_BREAK
-#line 982 "/home/qianfu/USTC-Compiler/lab1/build/src/parser/lexical_analyzer.c"
+#line 1028 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1984,6 +2030,29 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 97 "lexical_analyzer.l"
+#line 144 "standalone_lexer.l"
 
+
+int main(int argc, const char **argv) {
+    if (argc != 2) {
+        printf("usage: lexer_test input_file\n");
+        return 0;
+    }
+
+    const char *input_file = argv[1];
+    yyin = fopen(input_file, "r");
+    if (!yyin) {
+        fprintf(stderr, "cannot open file: %s\n", input_file);
+        return 1;
+    }
+
+    int token;
+    printf("%5s\t%10s\t%s\t%s\n", "Token", "Text", "Line", "Column (Start,End)");
+    while ((token = yylex())) {
+        printf("%-5d\t%10s\t%d\t(%d,%d)\n",
+               token, yytext, lines, pos_start, pos_end);
+    }
+    fclose(yyin);
+    return 0;
+}
 

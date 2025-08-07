@@ -31,11 +31,21 @@ syntax_tree_node *node(const char *node_name, int children_num, ...);
 /* TODO: Complete this definition.
    Hint: See pass_node(), node(), and syntax_tree.h.
          Use forward declaring. */
-%union {}
+%union {
+    syntax_tree_node *node;  // For syntax tree nodes
+    int integer;             // For integer tokens
+    float floatnum;          // For float tokens
+    
+}
 
 /* TODO: Your tokens here. */
 %token <node> ERROR
-%token <node> ADD
+%token <node> ADD SUB MUL DIV
+%token <node> LT LE GT GE EQ NE ASSIGN
+%token <node> SEMICOLON COMMA
+%token <node> LPAREN RPAREN LBRACKET RBRACKET LBRACE RBRACE
+%token <node> ELSE IF INT RETURN VOID WHILE FLOAT
+%token <node> ID INTEGER FLOATNUM
 %type <node> program
 
 %start program
